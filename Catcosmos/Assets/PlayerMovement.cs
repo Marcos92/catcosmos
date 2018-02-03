@@ -32,6 +32,5 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         moveInput.Normalize();
-		Debug.Log(moveInput);
 	}
 }

@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 1361530749}
   - component: {fileID: 1361530748}
   - component: {fileID: 1361530752}
+  - component: {fileID: 1361530753}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Planet
@@ -406,6 +407,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -9.8
+--- !u!114 &1361530753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1361530747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e1d83a799d2ae4b803bdc02a9f0bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceBetweenPoints: 0.2
 --- !u!1 &1794621999
 GameObject:
   m_ObjectHideFlags: 0
