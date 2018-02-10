@@ -8,40 +8,33 @@ public class SphericalGrid : MonoBehaviour
     private float size;
     private int totalPoints;
 
+    GridNode[] nodes;
+    public GridNode nodePrefab;
+
     void Start() 
     {
         size = transform.GetComponent<MeshFilter>().mesh.bounds.size.x * transform.localScale.x * 0.5f;
 
         totalPoints = (int)Mathf.Pow(Mathf.FloorToInt(size / spaceBetweenPoints), 2.0f);
-        List<Vector3> pts = PointsOnSphere(totalPoints);
 
-        List<GameObject> spheres = new List<GameObject>();
+        nodes = new GridNode[totalPoints];
 
-        int i = 0;
-    
-        foreach (Vector3 pt in pts)
-        {
-            spheres.Add(GameObject.CreatePrimitive(PrimitiveType.Sphere));
-            spheres[i].transform.parent = transform;
-            spheres[i].transform.position = pt * size;
-            spheres[i].transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-
-            i++;
-        }
+        CreateNodes();
     }
     
-    List<Vector3> PointsOnSphere(int n) //Creates list of points around sphere
+    void CreateNodes()
     {    
-        List<Vector3> pts = new List<Vector3>();
+        List<GridNode> nodes = new List<GridNode>();
+
         float inc = Mathf.PI * (3 - Mathf.Sqrt(5));
-        float off = 2.0f / n;
+        float off = 2.0f / totalPoints;
         float x;
         float y;
         float z;
         float r;
         float phi;
     
-        for (int k = 0; k < n; k++)
+        for (int k = 0; k < totalPoints; k++)
         {
             y = k * off - 1 + (off /2);
             r = Mathf.Sqrt(1 - y * y);
@@ -49,10 +42,14 @@ public class SphericalGrid : MonoBehaviour
             x = Mathf.Cos(phi) * r;
             z = Mathf.Sin(phi) * r;
 
-            pts.Add(new Vector3(x, y, z));
+            CreateNode(new Vector3(x, y, z), k);
         }
+    }
 
-        return pts;
+    void CreateNode(Vector3 position, int index)
+    {
+        GridNode node = Instantiate(nodePrefab, position * size, Quaternion.FromToRotation(transform.up, position * size - transform.position) * transform.rotation);
+        nodes[index] = node;
     }
 } 
  

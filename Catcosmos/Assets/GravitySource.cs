@@ -14,6 +14,6 @@ public class GravitySource : MonoBehaviour
 		// Apply downwards gravity to body
 		body.AddForce(gravityUp * gravity);
 		// Allign bodies up axis with the centre of planet
-		body.rotation = Quaternion.FromToRotation(localUp,gravityUp) * body.rotation;
+		body.rotation = Quaternion.FromToRotation(localUp, gravityUp) * body.rotation;
 	}  
 }

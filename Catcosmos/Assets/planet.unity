@@ -419,6 +419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceBetweenPoints: 0.5
+  nodePrefab: {fileID: 114398404406425616, guid: 186963da38d428543bc08e39689bb85c,
+    type: 2}
 --- !u!1 &1794621999
 GameObject:
   m_ObjectHideFlags: 0
