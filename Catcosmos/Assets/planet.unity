@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 1268069475}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceBetweenPoints: 0.5
+  nodes: []
   nodePrefab: {fileID: 114398404406425616, guid: 186963da38d428543bc08e39689bb85c,
     type: 2}
 --- !u!1 &1794621999

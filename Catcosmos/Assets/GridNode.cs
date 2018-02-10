@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class GridNode : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public bool active
+	{
+		get 
+		{ 
+			return active; 
+		}
+		set 
+		{ 
+			//active = value; 
+
+			transform.GetChild(0).gameObject.SetActive(value);
+		}
 	}
 }

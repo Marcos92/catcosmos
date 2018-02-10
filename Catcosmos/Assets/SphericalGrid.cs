@@ -8,8 +8,13 @@ public class SphericalGrid : MonoBehaviour
     private float size;
     private int totalPoints;
 
-    GridNode[] nodes;
-    public GridNode nodePrefab;
+    [HideInInspector]
+    public GridNode[] nodes;
+
+    [SerializeField]
+    private GridNode nodePrefab;
+
+    private GameObject player;
 
     void Start() 
     {
@@ -20,6 +25,13 @@ public class SphericalGrid : MonoBehaviour
         nodes = new GridNode[totalPoints];
 
         CreateNodes();
+
+        player = GameObject.FindWithTag("Player");
+    }
+
+    void Update()
+    {
+        FindActiveNode(1.0f);
     }
     
     void CreateNodes()
@@ -49,5 +61,29 @@ public class SphericalGrid : MonoBehaviour
         GridNode node = Instantiate(nodePrefab, position * size, Quaternion.FromToRotation(transform.up, position * size - transform.position) * transform.rotation);
         nodes[index] = node;
     }
-} 
+
+    void FindActiveNode(float minDistance)
+    {
+        Vector3 playerPosition = player.transform.position;
+
+        GridNode closestNode = null;
+        float closestDistance = 0.0f;
+
+        for(int i = 0; i < totalPoints; i++)
+        {
+            float distance = Vector3.Distance(nodes[i].gameObject.transform.position, playerPosition);
+
+            if(distance <= minDistance)
+            {
+                if(closestNode == null || closestNode != null && distance < closestDistance)
+                {
+                    closestNode = nodes[i];
+                    closestDistance = distance;
+                }
+            }
+            
+            nodes[i].active = nodes[i] == closestNode;
+        }
+    }
+}
  
