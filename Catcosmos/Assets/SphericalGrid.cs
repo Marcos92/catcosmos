@@ -24,8 +24,6 @@ public class SphericalGrid : MonoBehaviour
     
     void CreateNodes()
     {    
-        List<GridNode> nodes = new List<GridNode>();
-
         float inc = Mathf.PI * (3 - Mathf.Sqrt(5));
         float off = 2.0f / totalPoints;
         float x;
