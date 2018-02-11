@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float movementSpeed;
 	Vector3 moveInput;
+
+	public delegate void MoveEvent();
+    public static event MoveEvent OnMove;
 	
 	void Awake () 
 	{
@@ -32,5 +35,10 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         moveInput.Normalize();
+
+		if(moveInput != Vector3.zero)
+		{
+			OnMove();
+		}
 	}
 }

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f42b968ef2bb4a4583c5f44318af831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 2
 --- !u!23 &1268069471
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceBetweenPoints: 0.5
+  minDistance: 1
   nodes: []
   nodePrefab: {fileID: 114398404406425616, guid: 186963da38d428543bc08e39689bb85c,
     type: 2}
