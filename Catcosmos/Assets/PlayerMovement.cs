@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour {
 		planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravitySource>();
 		body = GetComponent<Rigidbody> ();
 
-		// Disable rigidbody gravity and rotation as this is simulated in GravityAttractor script
 		body.useGravity = false;
 		body.constraints = RigidbodyConstraints.FreezeRotation;
 	}

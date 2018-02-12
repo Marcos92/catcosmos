@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridNode : MonoBehaviour {
+[RequireComponent(typeof(SphereCollider))]
 
+public class GridNode : MonoBehaviour 
+{
 	public bool active
 	{
 		get 
@@ -16,4 +18,6 @@ public class GridNode : MonoBehaviour {
 			transform.GetChild(0).gameObject.SetActive(value);
 		}
 	}
+
+	
 }
