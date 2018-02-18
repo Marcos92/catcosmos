@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	GravitySource planet;
 	Rigidbody body;
@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	public delegate void MoveEvent();
     public static event MoveEvent OnMove;
+	public delegate void ActionEvent();
+    public static event ActionEvent OnAction;
 	
 	void Awake () 
 	{
@@ -38,6 +40,11 @@ public class PlayerMovement : MonoBehaviour {
 		if(moveInput != Vector3.zero)
 		{
 			OnMove();
+		}
+
+		if(Input.GetKeyDown("space"))
+		{
+			OnAction();
 		}
 	}
 }

@@ -35,7 +35,8 @@ public class SphericalGrid : MonoBehaviour
         RemoveOverlapingNodes();
 
         player = GameObject.FindWithTag("Player");
-        PlayerMovement.OnMove += UpdateNodes;
+        Player.OnMove += UpdateNodes;
+        Player.OnAction += InteractWithNode;
 
         UpdateNodes(); 
     }
@@ -91,6 +92,8 @@ public class SphericalGrid : MonoBehaviour
 
         float closestDistance = minDistance;
 
+        closestNode = null;
+
         for(int i = 0; i < totalPoints; i++)
         {
             float distance = Vector3.Distance(nodes[i].gameObject.transform.position, playerPosition);
@@ -113,6 +116,18 @@ public class SphericalGrid : MonoBehaviour
         for(int i = 0; i < totalPoints; i++)
         {
             nodes[i].active = nodes[i] == closestNode;
+        }
+    }
+
+    void InteractWithNode()
+    {
+        if(closestNode != null)
+        {
+            Debug.Log("Plant tree here!");
+        }
+        else
+        {
+            Debug.Log("No node nearby!");
         }
     }
 }
