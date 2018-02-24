@@ -17,6 +17,9 @@ public class SphericalGrid : MonoBehaviour
     [SerializeField]
     private GridNode nodePrefab;
 
+    [SerializeField]
+    private Plant plantPrefab; 
+
     private GameObject player;
 
     private GameObject[] obstacles;
@@ -123,7 +126,17 @@ public class SphericalGrid : MonoBehaviour
     {
         if(closestNode != null)
         {
-            Debug.Log("Plant tree here!");
+            if(closestNode.plant == null)
+            {
+                Debug.Log("Plant tree here!");
+                Instantiate(plantPrefab, closestNode.transform.position, closestNode.transform.rotation);
+                closestNode.plant = plantPrefab.GetComponent<Plant>();
+            }
+            else
+            {
+                Debug.Log("There's already a tree here!");
+            }
+            
         }
         else
         {

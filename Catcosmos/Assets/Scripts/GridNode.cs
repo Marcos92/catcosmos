@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GridNode : MonoBehaviour 
 {
+	public Plant plant;
+
 	public bool active
 	{
 		get 
@@ -18,6 +20,4 @@ public class GridNode : MonoBehaviour
 			//transform.GetChild(0).gameObject.SetActive(value);
 		}
 	}
-
-	
 }

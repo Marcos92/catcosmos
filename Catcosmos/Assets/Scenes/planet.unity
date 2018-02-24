@@ -573,3 +573,5 @@ MonoBehaviour:
   nodes: []
   nodePrefab: {fileID: 114778257122361650, guid: 186963da38d428543bc08e39689bb85c,
     type: 2}
+  plantPrefab: {fileID: 114964754750372188, guid: 544fea0b26ae8ce49817b9e4324d6fad,
+    type: 2}
