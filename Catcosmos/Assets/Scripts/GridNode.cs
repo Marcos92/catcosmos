@@ -17,6 +17,7 @@ public class GridNode : MonoBehaviour
 		set 
 		{
 			//SetActive() just being used for testing purposes
+			//Implement highlighting active node later
 			//transform.GetChild(0).gameObject.SetActive(value);
 		}
 	}
