@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GridNode : MonoBehaviour 
 {
+	public Plant plant;
+
 	public bool active
 	{
 		get 
@@ -15,9 +17,8 @@ public class GridNode : MonoBehaviour
 		set 
 		{
 			//SetActive() just being used for testing purposes
-			transform.GetChild(0).gameObject.SetActive(value);
+			//Implement highlighting active node later
+			//transform.GetChild(0).gameObject.SetActive(value);
 		}
 	}
-
-	
 }

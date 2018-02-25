@@ -17,6 +17,9 @@ public class SphericalGrid : MonoBehaviour
     [SerializeField]
     private GridNode nodePrefab;
 
+    [SerializeField]
+    private Plant plantPrefab; 
+
     private GameObject player;
 
     private GameObject[] obstacles;
@@ -35,7 +38,8 @@ public class SphericalGrid : MonoBehaviour
         RemoveOverlapingNodes();
 
         player = GameObject.FindWithTag("Player");
-        PlayerMovement.OnMove += UpdateNodes;
+        Player.OnMove += UpdateNodes;
+        Player.OnAction += InteractWithNode;
 
         UpdateNodes(); 
     }
@@ -91,6 +95,8 @@ public class SphericalGrid : MonoBehaviour
 
         float closestDistance = minDistance;
 
+        closestNode = null;
+
         for(int i = 0; i < totalPoints; i++)
         {
             float distance = Vector3.Distance(nodes[i].gameObject.transform.position, playerPosition);
@@ -113,6 +119,35 @@ public class SphericalGrid : MonoBehaviour
         for(int i = 0; i < totalPoints; i++)
         {
             nodes[i].active = nodes[i] == closestNode;
+        }
+    }
+
+    void InteractWithNode()
+    {
+        if(closestNode != null)
+        {
+            if(closestNode.plant == null)
+            {
+                Debug.Log("Plant tree here!");
+                Plant newPlant = Instantiate(plantPrefab, closestNode.transform.position, closestNode.transform.rotation);
+                closestNode.plant = newPlant.GetComponent<Plant>();
+                newPlant.transform.parent = closestNode.transform;
+            }
+            else
+            {
+                if(closestNode.plant.currentFruits > 0)
+                {
+                    closestNode.plant.CollectFruit();
+                }
+                else
+                {
+                    closestNode.plant.Water();
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No node nearby!");
         }
     }
 }
