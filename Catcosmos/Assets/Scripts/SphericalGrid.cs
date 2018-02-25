@@ -128,25 +128,22 @@ public class SphericalGrid : MonoBehaviour
         {
             if(closestNode.plant == null)
             {
-                //Debug.Log("Plant tree here!");
+                Debug.Log("Plant tree here!");
                 Plant newPlant = Instantiate(plantPrefab, closestNode.transform.position, closestNode.transform.rotation);
                 closestNode.plant = newPlant.GetComponent<Plant>();
                 newPlant.transform.parent = closestNode.transform;
             }
             else
             {
-                Debug.Log(closestNode.plant.currentFruits);
-
                 if(closestNode.plant.currentFruits > 0)
                 {
                     closestNode.plant.CollectFruit();
                 }
                 else
                 {
-                    Debug.Log("There's already a tree here!");
+                    closestNode.plant.Water();
                 }
             }
-            
         }
         else
         {
