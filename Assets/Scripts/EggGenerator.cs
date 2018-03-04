@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EggGenerator : MonoBehaviour
 {
     public Creature mom;
     public Creature dad;
+
+    private Database database;
+
+    void Start()
+    {
+        database = transform.GetComponent<Database>();
+    }
 
     void Update()
     {
@@ -17,15 +25,16 @@ public class EggGenerator : MonoBehaviour
 
     void GenerateEgg()
     {
-		int[] childGenes = GenerateChildGenes();
-		PrintGenes(childGenes);
+        GameObject egg = new GameObject();
+        egg.AddComponent<Egg>();
+        egg.GetComponent<Egg>().creature = GetCreatureFromGenes();
     }
 
     List<int> GenerateGenePool()
     {
         List<int> list = new List<int>();
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < mom.genes.Length; i++)
         {
             for (int j = 0; j < mom.genes[i]; j++)
             {
@@ -57,7 +66,7 @@ public class EggGenerator : MonoBehaviour
 
 			bool newGene = true;
 
-			for(int i = 0; i < 3; i++)
+			for(int i = 0; i < genePositions.Length; i++)
 			{
 				if(genePositions[i] == tempPosition) //Check if parent gene was already picked
 				{
@@ -79,6 +88,21 @@ public class EggGenerator : MonoBehaviour
 				return childGenes;
 			}
         }
+    }
+
+    Creature GetCreatureFromGenes()
+    {
+        int[] genes = GenerateChildGenes();
+
+        for(int i = 0; i < database.creatures.Length; i++)
+        {
+            if(database.creatures[i].genes.SequenceEqual(genes))
+            {
+                return database.creatures[i];
+            }
+        }
+
+        return null;
     }
 
 	void PrintGenes(int[] genes)

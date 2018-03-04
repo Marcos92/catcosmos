@@ -287,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965550536}
   - component: {fileID: 965550535}
+  - component: {fileID: 965550537}
   m_Layer: 0
   m_Name: EggGenerator
   m_TagString: Untagged
@@ -320,6 +321,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &965550537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 965550534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4d755f6028cbe4584f6615593b478f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatures:
+  - {fileID: 114174143000265288, guid: 27bc07240b0416d4aa516b74a77998d7, type: 2}
+  - {fileID: 114174143000265288, guid: 28c5a31dfc2078c4cafdd5206ed1681e, type: 2}
+  - {fileID: 114174143000265288, guid: 7b836c7b8d7f6744abde699a9e28b685, type: 2}
+  - {fileID: 114174143000265288, guid: 159fda55bced83e4fb98c33c8ef07e0c, type: 2}
+  - {fileID: 114881780937827302, guid: d4dffec1d3788cf4186032ae2434ddf7, type: 2}
+  - {fileID: 114174143000265288, guid: ad28f5aaaed34bd4db237d6a2f116cb0, type: 2}
+  - {fileID: 114013411835158812, guid: d5960d11ed2d87646836440f8b077f53, type: 2}
+  - {fileID: 114013411835158812, guid: b3d6dc5abd877a34ab7d84487ea73682, type: 2}
+  - {fileID: 114013411835158812, guid: d0f07b81c50c8df4aa35a5abb44c0989, type: 2}
+  - {fileID: 114667251044011798, guid: 2a3d116e394681d4099ea55969ca218c, type: 2}
 --- !u!1 &1244062642
 GameObject:
   m_ObjectHideFlags: 0
